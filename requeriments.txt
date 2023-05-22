@@ -1,0 +1,8 @@
+nltk
+numpy
+pandas
+sklearn
+scikit-learn
+wordcloud
+
+# pip install -r ./requirements.txt
