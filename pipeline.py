@@ -1,6 +1,7 @@
 from cleaningDataset import Cleaner
 from identifyBullying import Identifier
 from classifyBullying import Classifier
+import constants
 
 # Limpia data
 # dataCleaner = Cleaner()
@@ -9,19 +10,12 @@ from classifyBullying import Classifier
 # Initialize toxicity identifier
 bullyIdentifier = Identifier()
 
-# Prepara o Entrena los modelos de clasificacion
+# Initialize cyberbullying classifier
 bullyClassifier = Classifier()
-bullyClassifier.prepare_train()
-# bullyClassifier.trainModel('log-reg')
-# bullyClassifier.trainModel('grad-boosting')
-# bullyClassifier.trainModel('rand-forest')
-# bullyClassifier.trainModel('neural-net')
-
-# bullyClassifier.load_predict('grad-boosting')
-# bullyClassifier.load_predict('log-reg')
-# bullyClassifier.load_predict('rand-forest')
 
 class Pipeline:
+
+    # pipeline for a tweet, input a string twwet, then tweet is cleaned, parsed and passed to the model, finally it is identified and classfied
     def get_result(tweet, model='neural-net'):
         print('-'*50)
         identify = bullyIdentifier.get_toxicity(tweet)
@@ -34,3 +28,15 @@ class Pipeline:
         print("Classify:", response)
         print('-'*50)
         return response
+
+    # Get metrics of models
+    def get_metrics():
+        for model in constants.LIST_MODELS:
+            print('-'*50, model,'-'*50)
+            bullyClassifier.load_predict(model)
+        print('-'*50)
+
+    # Train models
+    def train_models():
+        for model in constants.LIST_MODELS:
+            bullyClassifier.trainModel(model)

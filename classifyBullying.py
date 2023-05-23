@@ -19,6 +19,7 @@ class Classifier:
         self.tfidf = None
         self.scale = None
         self.cleaner = Cleaner()
+        self.prepare_train()
 
     def load_label_encoder(self):
         print("Loading Label Encoder")
