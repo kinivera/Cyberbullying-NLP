@@ -9,7 +9,7 @@ grad-boosting
 tweet = ''
 while True:
     tweet = input("Insert any tweet: ")
-    if tweet.upper() == "SALIR": break
+    if tweet.upper() == "SALIR" or tweet.upper() == "EXIT": break
     Modelo_Definitivo.get_result(tweet)
 
 

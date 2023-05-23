@@ -178,9 +178,9 @@ class Cleaner:
     #     text=" ".join(correct_spell.split())
         return text
 
-    def cleanDataset(self, pathInput, pathOutput):
+    def cleanDataset(self):
         # Se lee el dataset
-        df=pd.read_csv(pathInput)
+        df=pd.read_csv(constants.CSV_INPUT)
 
         # print los primeros 5 elementps
         # print(df.head())
@@ -215,7 +215,7 @@ class Cleaner:
         # print(df.isnull().sum())
 
         # removing unidentified cyberbullying type
-        # df=df[df['cyberbullying_type']!='other_cyberbullying']
+        df=df[df['cyberbullying_type']!='other_cyberbullying']
 
         # print(df.sample(5))
 
@@ -229,10 +229,10 @@ class Cleaner:
         # print(encoder.get_params())
 
         # save labelEncoder
-        pickle.dump(encoder, open(f"{constants.MODELS_PATH}{constants.LBL_ENCODER}.md", 'wb'))
+        pickle.dump(encoder, open(f"{constants.MODELS_PATH}{constants.LBL_ENCODER_FILE}", 'wb'))
 
         # saving the dataframe
-        df.to_csv(pathOutput, header=True, index=False, encoding='utf-8')
+        df.to_csv(constants.CSV_CLEANED, header=True, index=False, encoding='utf-8')
 
 
 

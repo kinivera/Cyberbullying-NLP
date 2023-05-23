@@ -24,9 +24,9 @@ class Classifier:
         print("Loading Label Encoder")
         self.labelEncoder = pickle.load(open(f"{constants.MODELS_PATH}{constants.LBL_ENCODER_FILE}", 'rb'))
 
-    def prepare_train(self, inputData, tst_sz=0.33):
+    def prepare_train(self, tst_sz=0.33):
         print("Preparing Training and Validation Data ...")
-        df=pd.read_csv(inputData)
+        df=pd.read_csv(constants.CSV_CLEANED)
 
         x=df['clean_data']
         y=df['cyberbullying_type']

@@ -4,14 +4,14 @@ from classifyBullying import Classifier
 
 # Limpia data
 # dataCleaner = Cleaner()
-# dataCleaner.cleanDataset('./cyberbullying_tweets.csv', './cyberbullying_tweets_cleaned.csv')
+# dataCleaner.cleanDataset()
 
 # Initialize toxicity identifier
 bullyIdentifier = Identifier()
 
 # Prepara o Entrena los modelos de clasificacion
 bullyClassifier = Classifier()
-bullyClassifier.prepare_train('./cyberbullying_tweets_cleaned.csv')
+bullyClassifier.prepare_train()
 # bullyClassifier.trainModel('log-reg')
 # bullyClassifier.trainModel('grad-boosting')
 # bullyClassifier.trainModel('rand-forest')
